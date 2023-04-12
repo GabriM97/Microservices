@@ -58,7 +58,7 @@ class ServiceController extends AbstractController
      *
      * @return JsonResponse
      */
-    #[Route("/service/run", name: "service_run", methods: 'GET')]    
+    #[Route("/service/run", name: "service_run_both", methods: 'GET')]
     public function runBoth() : JsonResponse 
     {
         foreach ($this->payloads as $key => $payload) {
