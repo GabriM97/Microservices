@@ -1,6 +1,7 @@
 FROM php:8.1-apache as base
 
-RUN docker-php-ext-install mysqli pdo_mysql && a2enmod rewrite
+RUN pecl install mongodb && a2enmod rewrite
+RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
 
 ENV APACHE_DOCUMENT_ROOT /app/public
 
