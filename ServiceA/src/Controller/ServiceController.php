@@ -14,7 +14,7 @@ class ServiceController extends AbstractController
 {
     private array $payloads = [];
 
-    private const SERVICE_B_ENDPOINT = 'http://service-b-api/get';
+    private const SERVICE_B_ENDPOINT = 'http://service-b-api/process';
 
     public function __construct(private ClientInterface $httpClient, private LoggerInterface $logger)
     {

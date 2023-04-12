@@ -9,8 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class ServiceController extends AbstractController
 {
 
-    #[Route("/get", name: "service_run")]
-    public function run() : JsonResponse 
+    #[Route("/process", name: "service_process")]
+    public function process() : JsonResponse 
     {
         return $this->json(['hello world from Service B']);
     }
