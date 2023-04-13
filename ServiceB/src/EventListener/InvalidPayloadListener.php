@@ -15,11 +15,9 @@ class InvalidPayloadListener implements EventSubscriberInterface
         if (!$ex instanceof InvalidPayloadException) {
             return;
         }
+        /** @var InvalidPayloadException $ex */ 
 
         $responseCode = $ex->getCode();
-        
-        /** @var InvalidPayloadException $ex */ 
-        
         $event->setResponse(new JsonResponse(
             [
                 'type' => '/doc/errors/invalid_payload',

@@ -9,13 +9,21 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class PayloadValidator extends ConstraintValidator
 {
+    /**
+     * @var array $validPayloadNames
+     */
     private array $validPayloadNames = ['X', 'Y'];
 
+    /**
+     * @var PayloadConstraint $constraint constraint used to validate the payload
+     */
     private PayloadConstraint $constraint;
 
     /**
      * @param array $payload
      * @param PayloadConstraint $constraint
+     * 
+     * @return void
      */
     public function validate($payload, Constraint $constraint): void
     {
@@ -36,12 +44,15 @@ class PayloadValidator extends ConstraintValidator
      *
      * @param  bool $violatingCondition the condition to check
      * @param  string $reason a string saying what's the problem with the condition 
+     * 
      * @return void
      */
     private function checkViolation(bool $violatingCondition, string $reason) {
         if (!$violatingCondition) {
             return;
         }
+
+        // add violation to context
         $this->context->buildViolation($this->constraint->message)
             ->setParameter('{{ reason }}', $reason)
             ->addViolation();

@@ -10,8 +10,15 @@ class MyBusinessLogic {
     {
         
     }
-    
-    public function doStuff(array $data)
+        
+    /**
+     * Function that performs stuff
+     *
+     * @param  array $data
+     * 
+     * @return string
+     */
+    public function doStuff(array $data): string
     {
         // apply business logic...
 

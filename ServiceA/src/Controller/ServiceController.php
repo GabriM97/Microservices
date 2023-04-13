@@ -85,7 +85,7 @@ class ServiceController extends AbstractController
     private function sendJsonPayload(array $payload, string $endpoint, string $method = 'POST'): Response
     {
         try {
-            $this->logger->info('Sending payload "' . $payload . '" to "' . $endpoint .'"');
+            $this->logger->info('Sending payload "' . $payload['name'] . '" to "' . $endpoint .'"');
 
             // send json http request to ServiceB using the payload.
             $response = $this->httpClient->request(

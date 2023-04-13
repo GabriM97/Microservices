@@ -4,7 +4,9 @@ namespace App\ServiceB\Exception;
 
 class InvalidPayloadException extends \Exception
 {
-    /** @var array $errorMessages */
+    /** 
+     * @var array $errorMessages 
+     **/
     protected array $errorMessages;
 
     public function __construct(string $message, int $code, protected iterable $errors)
@@ -29,7 +31,8 @@ class InvalidPayloadException extends \Exception
     /**
      * Maps the error message from a given iterable set of errors
      *
-     * @param  mixed $errors
+     * @param  iterable $errors
+     * 
      * @return array
      */
     private function mapErrors(iterable $errors): array 
