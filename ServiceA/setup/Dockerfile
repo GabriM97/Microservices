@@ -1,6 +1,6 @@
 FROM php:8.1-apache as base
 
-RUN docker-php-ext-install mysqli pdo_mysql && a2enmod rewrite
+RUN a2enmod rewrite
 
 ENV APACHE_DOCUMENT_ROOT /app/public
 
@@ -12,20 +12,3 @@ RUN mkdir /app
 COPY ../ /app
 
 WORKDIR /app
-
-# - - - - - - - - - - - - 
-# commented out because composer was taking ages to install. Will investigate why later.
-
-# FROM composer:2.4 as install
-
-# ENV COMPOSER_ALLOW_SUPERUSER=1
-
-# COPY ./composer.*/ /app
-
-# RUN composer install
-
-# - - - - - - - - - - - - 
-
-# FROM base
-
-# COPY --from=install vendor/ vendor/
