@@ -26,9 +26,9 @@ class PayloadValidator extends ConstraintValidator
         $this->constraint = $constraint;
         
         $this->checkViolation(!is_array($payload), 'the payload is not an array');
-        $this->checkViolation(empty($payload['id']), 'the property "id" is missing');
+        $this->checkViolation(empty($payload['name']), 'the property "name" is missing');
         $this->checkViolation(empty($payload['data']), 'the property "data" is missing');
-        $this->checkViolation(!in_array($payload['id'] ?? '', $this->validPayloadIds), 'the payload id is not valid');
+        $this->checkViolation(!in_array($payload['name'] ?? '', $this->validPayloadIds), 'the payload id is not valid');
     }
     
     /**

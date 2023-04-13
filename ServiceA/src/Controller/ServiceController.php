@@ -20,12 +20,12 @@ class ServiceController extends AbstractController
     {
         $this->payloads = [
             'X' => [
-                'id' => 'X',
-                'data' => 'my_X_data',
+                'name' => 'X',
+                'data' => 'my_data',
             ],
             'Y' => [
-                'id' => 'Y',
-                'data' => 'my_Y_data',
+                'name' => 'Y',
+                'data' => 'my_data',
             ],
         ];
     }
@@ -43,11 +43,11 @@ class ServiceController extends AbstractController
             $this->logger->info('Sending payload "' . $payload . '" to "' . self::SERVICE_B_ENDPOINT .'"');
 
             // fire http request to ServiceB using one of the payloads.
-            $response = $this->httpClient->request('POST', self::SERVICE_B_ENDPOINT, ['json' => $payload]);
+            $response = $this->httpClient->request('POST', self::SERVICE_B_ENDPOINT, ['json' => $this->payloads[$payload]]);
         } catch (Throwable $e) {
             $this->logger->error('Error (' . $e->getCode() . ') while sending payload: ' . $e->getMessage());
             
-            return $this->json($e->getMessage(), $e->getCode());
+            return $this->json($e->getMessage(), $e->getCode() ?: 500);
         }
 
         return $this->json($response->getBody()->getContents(), $response->getStatusCode());
