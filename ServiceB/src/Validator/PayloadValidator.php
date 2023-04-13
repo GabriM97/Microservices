@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class PayloadValidator extends ConstraintValidator
 {
-    private array $validPayloadIds = ['X', 'Y'];
+    private array $validPayloadNames = ['X', 'Y'];
 
     private PayloadConstraint $constraint;
 
@@ -28,7 +28,7 @@ class PayloadValidator extends ConstraintValidator
         $this->checkViolation(!is_array($payload), 'the payload is not an array');
         $this->checkViolation(empty($payload['name']), 'the property "name" is missing');
         $this->checkViolation(empty($payload['data']), 'the property "data" is missing');
-        $this->checkViolation(!in_array($payload['name'] ?? '', $this->validPayloadIds), 'the payload id is not valid');
+        $this->checkViolation(!in_array($payload['name'] ?? '', $this->validPayloadNames), 'the payload "name" is not valid');
     }
     
     /**

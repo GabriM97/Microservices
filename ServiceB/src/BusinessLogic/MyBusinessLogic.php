@@ -11,23 +11,30 @@ class MyBusinessLogic {
         
     }
     
-    /** */
-    public function doStuff(array $payload): int
+    public function doStuff(array $data)
     {
         // apply business logic...
 
-        return $this->storePayload($payload);
+        return $this->storeData($data);
     }
-
-    private function storePayload(array $payload): int
+    
+    /**
+     * Create a new Payload from $data and store to DB.
+     *
+     * @param  array $data
+     * @return string
+     */
+    private function storeData(array $data): string
     {
-        $payloadDocument = new Payload();
-        $payloadDocument->setName($payload['name']);
-        $payloadDocument->setData($payload['data']);
+        // create Payload Document
+        $payload = (new Payload())
+            ->setName($data['name'])
+            ->setData($data['data']);
 
-        $this->dm->persist($payloadDocument);
+        // store Payload to DB
+        $this->dm->persist($payload);
         $this->dm->flush();
 
-        return $payloadDocument->getId();
+        return $payload->getId();
     }
 }
