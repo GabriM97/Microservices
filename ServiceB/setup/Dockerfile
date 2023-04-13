@@ -1,7 +1,7 @@
 FROM php:8.1-apache as base
 
-RUN pecl install mongodb && a2enmod rewrite
-RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
+RUN apt-get update && apt-get install -y libssl-dev curl
+RUN pecl install mongodb && docker-php-ext-enable mongodb && a2enmod rewrite
 
 ENV APACHE_DOCUMENT_ROOT /app/public
 
