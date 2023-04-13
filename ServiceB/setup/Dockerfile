@@ -13,20 +13,3 @@ RUN mkdir /app
 COPY ../ /app
 
 WORKDIR /app
-
-# - - - - - - - - - - - - 
-# commented out because composer was taking ages to install. Will investigate why later.
-
-# FROM composer:2.4 as install
-
-# ENV COMPOSER_ALLOW_SUPERUSER=1
-
-# COPY ./composer.*/ /app
-
-# RUN composer install
-
-# - - - - - - - - - - - - 
-
-# FROM base
-
-# COPY --from=install vendor/ vendor/
