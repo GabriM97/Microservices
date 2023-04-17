@@ -29,10 +29,11 @@ docker compose -f setup/docker-compose.yaml up  # you might need sudo permission
 ## Endpoints
 
 #### POST `/process`
-**Endpoint:** `/process`
-**Method:** POST
-**Description:** This endpoint will validate the given payload, store it and return the generated id.
-**Request Body**:
+
+- **Endpoint:** `/process`
+- **Method:** POST
+- **Description:** This endpoint will validate the given payload, store it and return the generated id.
+- **Request Body**:
 ```
 {
     "name": "string"
@@ -42,7 +43,7 @@ Explanation:
     - "name" (required): The endpoint will only accept payloads with name "X" or "Y". Anything else will fail the validation.
     - "data" (required): A string containing the data to store.
 ```
-**Success Response:**
+- **Success Response:**
 ```
 HTTP Status Code: 200 OK
 Headers:
@@ -56,7 +57,7 @@ Body:
 Explanation:
     - payload_id: Returns the generated id of the stored payload.
 ```
-**Error Response:**
+- **Error Response:**
 ```
 HTTP Status Code: 400 Bad Request
 Headers:
