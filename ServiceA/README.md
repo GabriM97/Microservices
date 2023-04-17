@@ -29,12 +29,13 @@ docker compose -f setup/docker-compose.yaml up  # you might need sudo permission
 ## Endpoints
 
 #### GET `service/run/{payload}`
-**Endpoint:** `/service/run/{payload}`
-**Method:** GET
-**Description:** This endpoint will send an HTTP request to the `ServiceB` using the given payload and returns a 200 response containing a `payload_id`.
-**Parameters:**
+
+- **Endpoint:** `/service/run/{payload}`
+- **Method:** GET
+- **Description:** This endpoint will send an HTTP request to the `ServiceB` using the given payload and returns a 200 response containing a `payload_id`.
+- **Parameters:**
     - `{payload}`: string (required) - The payload to use. Accepts only 'X' or 'Y' which are the only two payloads available.
-**Success Response:**
+- **Success Response:**
 ```
 HTTP Status Code: 200 OK
 Headers:
@@ -48,7 +49,7 @@ Body:
 Explanation:
     - payload_id: Returns the generated id of the stored payload.
 ```
-**Error Response:**
+- **Error Response:**
 ```
 HTTP Status Code: 400 Bad Request
 Headers:
@@ -70,10 +71,11 @@ Explanation:
 ```
 
 #### GET `/service/run`
-**Endpoint:** `/service/run`
-**Method:** GET
-**Description:** This endpoint will send two HTTP requests to the `ServiceB` using, respectively, the payload "X" and the payload "Y" and return a response containing the response messages of each request.
-**Response:**
+
+- **Endpoint:** `/service/run`
+- **Method:** GET
+- **Description:** This endpoint will send two HTTP requests to the `ServiceB` using, respectively, the payload "X" and the payload "Y" and return a response containing the response messages of each request.
+- **Response:**
 ```
 HTTP Status Code: 
     - `200 OK` - When no errors occurred
